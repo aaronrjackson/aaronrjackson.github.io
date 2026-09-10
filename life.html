@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aaron Jackson — off the clock</title>
+  <title>Aaron Jackson: off the clock</title>
   <meta name="description" content="Aaron Jackson away from work: music, and competitive Counter-Strike.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,8 @@
 
   <div class="wrap">
 
-    <!-- The spine markup is duplicated in index.html. Keep the two in sync. -->
+    <!-- Spine markup is shared with index.html; this copy adds the "off the clock"
+         sub-nav and points the section links cross-page. Keep the common parts in sync. -->
     <header class="spine">
       <div class="spine-top">
         <p class="name"><a href="index.html">aaron_jackson</a></p>
@@ -29,14 +30,22 @@
             <li><a href="index.html#contact">contact</a></li>
           </ul>
           <ul class="nav-aside">
-            <li><a href="life.html" aria-current="page">off the clock</a></li>
+            <li>
+              <a href="life.html" aria-current="page">off the clock</a>
+              <!-- Sub-nav lives only on this page, so it is invisible from index.html.
+                   Keep these items in sync with the <section> ids below. -->
+              <ul class="nav-sub">
+                <li><a href="#music">music</a></li>
+                <li><a href="#counter-strike">counter-strike</a></li>
+              </ul>
+            </li>
           </ul>
         </nav>
       </div>
 
       <ul class="links" aria-label="Elsewhere">
-        <li><a href="https://github.com/aaronrjackson">github</a></li>
-        <li><a href="https://www.linkedin.com/in/aaronrileyjackson/">linkedin</a></li>
+        <li><a href="https://github.com/aaronrjackson" target="_blank" rel="noopener">github</a></li>
+        <li><a href="https://www.linkedin.com/in/aaronrileyjackson/" target="_blank" rel="noopener">linkedin</a></li>
         <li><a href="mailto:05.aaronjackson@gmail.com">email</a></li>
       </ul>
     </header>
@@ -73,5 +82,6 @@
     </main>
   </div>
 
+  <script src="app.js" defer></script>
 </body>
 </html>
