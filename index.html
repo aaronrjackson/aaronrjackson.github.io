@@ -3,21 +3,110 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello</title>
+  <title>Aaron Jackson</title>
+  <meta name="description" content="Aaron Jackson — CS graduate student at Colorado School of Mines and Software Engineer at TrackVia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Public+Sans:ital,wght@0,400;0,600;1,400&display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>Hello, world.</h1>
+  <a class="skip-link" href="#about">Skip to content</a>
 
-  <p>
-    This page is live. That is the only thing it is here to prove.
-  </p>
+  <div class="wrap">
 
-  <p>
-    Everything about it is yours to delete. Open Claude Code in this folder and
-    tell it what you actually want to build.
-  </p>
+    <!-- The spine markup is duplicated in life.html. Keep the two in sync. -->
+    <header class="spine">
+      <div class="spine-top">
+        <h1 class="name">aaron_jackson</h1>
+        <p class="role">CS grad student, Colorado School of Mines<br>Software Engineer @ TrackVia</p>
 
+        <nav class="nav" aria-label="Sections">
+          <ul>
+            <li><a href="#about">about</a></li>
+            <li><a href="#projects">projects</a></li>
+            <li><a href="#contact">contact</a></li>
+          </ul>
+          <ul class="nav-aside">
+            <li><a href="life.html">off the clock</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <ul class="links" aria-label="Elsewhere">
+        <li><a href="https://github.com/aaronrjackson">github</a></li>
+        <li><a href="https://www.linkedin.com/in/aaronrileyjackson/">linkedin</a></li>
+        <li><a href="mailto:05.aaronjackson@gmail.com">email</a></li>
+      </ul>
+    </header>
+
+    <main>
+
+      <section id="about" aria-labelledby="about-h">
+        <h2 id="about-h">// about</h2>
+
+        <!-- TODO: add a professional headshot if you want one. Suggested markup:
+        <figure class="photo">
+          <img src="img/aaron.jpg" width="800" height="800"
+               alt="Aaron Jackson">
+        </figure>
+        -->
+
+        <p>
+          I'm a computer science graduate student at the Colorado School of Mines and a
+          full-time Software Engineer at TrackVia.
+        </p>
+        <p>
+          I finished my B.S. in Computer Science at Mines in three years — Fall 2023 to
+          May 2026 — with a concentration in Data Science, and I've stayed on for graduate
+          study while working full-time.
+        </p>
+      </section>
+
+      <section id="projects" aria-labelledby="projects-h">
+        <h2 id="projects-h">// projects</h2>
+
+        <!-- TODO: replace these three stubs with real projects.
+             Keep the structure: h3 title, .stack line, one or two sentences, a link. -->
+
+        <article class="project">
+          <h3>Project name</h3>
+          <p class="stack">Python · PostgreSQL</p>
+          <p>One or two sentences on what it is and what it does.</p>
+          <p><a href="#">repo &rarr;</a></p>
+        </article>
+
+        <article class="project">
+          <h3>Project name</h3>
+          <p class="stack">TypeScript · React</p>
+          <p>One or two sentences on what it is and what it does.</p>
+          <p><a href="#">writeup &rarr;</a></p>
+        </article>
+
+        <article class="project">
+          <h3>Project name</h3>
+          <p class="stack">Go</p>
+          <p>One or two sentences on what it is and what it does.</p>
+          <p><a href="#">repo &rarr;</a></p>
+        </article>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-h">
+        <h2 id="contact-h">// contact</h2>
+        <p>
+          Reach me at <a href="mailto:05.aaronjackson@gmail.com">05.aaronjackson@gmail.com</a>,
+          or find me on <a href="https://github.com/aaronrjackson">GitHub</a> and
+          <a href="https://www.linkedin.com/in/aaronrileyjackson/">LinkedIn</a>.
+        </p>
+        <!-- TODO: add resume link once updated, e.g.
+        <p><a href="aaron-jackson-resume.pdf">resume (PDF) &rarr;</a></p>
+        -->
+      </section>
+
+    </main>
+  </div>
+
+  <script src="app.js" defer></script>
 </body>
 </html>
