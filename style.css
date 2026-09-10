@@ -3,8 +3,8 @@
 
    Type      display + nav : 0xProto (400 / 700), self-hosted woff2, see fonts/
              body          : Noto Sans (400 / 600 / 400 italic), Google Fonts
-   Scale     body 1.15rem / 1.6 · h1 clamp(2rem, 5vw, 2.75rem) · section
-             labels 0.8rem uppercase · meta 0.8rem
+   Scale     body 1.15rem / 1.6 · section labels ("// name") 0.9rem mono bold,
+             the "//" muted · meta 0.78rem
    Color     one accent (orange), used only on links + the active-section mark
    Spacing   8-scale: 0.5 / 1 / 1.5 / 2 / 3 / 4 / 6 rem
    Bold move left column is a monospaced "spine"; a thin accent rule marks the
@@ -212,8 +212,8 @@ a:hover { text-decoration: none; }
 
 .links {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--s2);
+  flex-direction: column;
+  gap: var(--s1);
 }
 .links a:hover { color: var(--accent); }
 
@@ -245,12 +245,13 @@ section:first-child { padding-top: 0; }
 
 h2 {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--ink);
   margin: 0 0 var(--s3);
 }
+h2 .tok { color: var(--muted); }   /* the "//" prefix, kept quiet */
 
 h3 {
   font-size: 1.15rem;
@@ -322,6 +323,20 @@ p:last-child { margin-bottom: 0; }
   color: var(--muted);
   margin-top: var(--s1);
 }
+
+/* ---- page footer -------------------------------------------------------- */
+
+.pagefoot {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: var(--s4) var(--s3) var(--s5);
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.pagefoot p { margin: 0; }
 
 /* ---- narrow screens -------------------------------------------------------- */
 
