@@ -1,0 +1,212 @@
+HTTP/2 200 
+server: GitHub.com
+content-type: text/html; charset=utf-8
+last-modified: Tue, 15 Sep 2026 17:29:20 GMT
+access-control-allow-origin: *
+strict-transport-security: max-age=31556952
+etag: "6aa98070-25b1"
+expires: Tue, 15 Sep 2026 17:47:22 GMT
+cache-control: max-age=600
+x-proxy-cache: MISS
+x-github-request-id: 8D6A:370837:FD744:12FD21:6AA98251
+x-github-edge-region: iad
+accept-ranges: bytes
+age: 0
+date: Tue, 15 Sep 2026 17:37:22 GMT
+via: 1.1 varnish
+x-served-by: cache-den-kden1300067-DEN
+x-cache: MISS
+x-cache-hits: 0
+x-timer: S1789493842.013528,VS0,VE71
+vary: Accept-Encoding
+x-fastly-request-id: 6cba3344fc22e7456c101641c84dd054c343b94c
+content-length: 9649
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- Applies a saved theme choice before first paint, so there's no flash of the
+       wrong theme. Duplicated in life.html; keep both in sync. -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aaron Jackson</title>
+  <meta name="description" content="Aaron Jackson. CS graduate student at Colorado School of Mines and Software Engineer at TrackVia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#about">Skip to content</a>
+
+  <div class="wrap">
+
+    <!-- Spine markup is shared with life.html (which adds a sub-nav and cross-page
+         hrefs). Keep the common parts in sync. -->
+    <header class="spine">
+      <div class="spine-top">
+        <h1 class="name">aaron_jackson</h1>
+        <p class="role">CS grad student, Colorado School of Mines<br>Software Engineer @ TrackVia</p>
+
+        <nav class="nav" aria-label="Sections">
+          <ul>
+            <li><a href="#about">about</a></li>
+            <li><a href="#projects">projects</a></li>
+            <li><a href="#contact">contact</a></li>
+          </ul>
+          <ul class="nav-aside">
+            <li><a href="life.html">off the clock</a></li>
+          </ul>
+        </nav>
+
+      </div>
+
+      <button type="button" class="theme-toggle" role="switch" aria-checked="false" aria-label="Dark theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+        </svg>
+        <span class="theme-toggle-thumb" aria-hidden="true"></span>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </svg>
+      </button>
+
+      <ul class="links" aria-label="Elsewhere">
+        <li><a href="https://github.com/aaronrjackson" target="_blank" rel="noopener">github</a></li>
+        <li><a href="https://www.linkedin.com/in/aaronrileyjackson/" target="_blank" rel="noopener">linkedin</a></li>
+        <li><a href="mailto:05.aaronjackson@gmail.com">email</a></li>
+      </ul>
+    </header>
+
+    <main>
+
+      <section id="about" aria-labelledby="about-h">
+        <h2 id="about-h"><span class="tok" aria-hidden="true">//</span> about</h2>
+
+        <p class="greeting">Hi, I'm Aaron.</p>
+
+        <figure class="photo photo--headshot">
+          <img src="img/aaron.webp" width="1151" height="1536" alt="Aaron Jackson">
+        </figure>
+
+        <p>
+          I'm a computer science graduate student at the Colorado School of Mines and a
+          full-time Software Engineer at TrackVia.
+        </p>
+        <p>
+          I finished my B.S. in Computer Science at Mines in three years (Fall 2023 to
+          May 2026) with a concentration in Data Science, and I'm continuing there for
+          my Master's (expected May 2027).
+        </p>
+      </section>
+
+      <section id="projects" aria-labelledby="projects-h">
+        <h2 id="projects-h"><span class="tok" aria-hidden="true">//</span> projects</h2>
+
+        <!-- Ordered by date built, most recent first. -->
+
+        <article class="project">
+          <h3>ByteFlash</h3>
+          <p class="stack">Python · OpenCV</p>
+          <p>
+            An optical data-transfer system: encodes an image as a sequence of flashing
+            color blocks on a monitor, then decodes it frame-by-frame from webcam video,
+            no physical connection between sender and receiver. Final project for
+            CSCI 507, August 2026.
+          </p>
+          <p><a href="https://github.com/aaronrjackson/ByteFlash" target="_blank" rel="noopener">repo &rarr;</a></p>
+        </article>
+
+        <article class="project">
+          <h3>Predicting Buy Decisions in Professional CS2</h3>
+          <p class="stack">Python · scikit-learn · pandas</p>
+          <p>
+            A model that recommends the buy-type call (eco, half-buy, force-buy, or
+            full-buy) a tier-1 team would make from a given game state, trained on
+            parsed replays from three professional tournaments. Beat the majority-class
+            baseline 4x on macro-F1 and correctly flagged eco/force-buy situations over
+            74% of the time. Built for DSCI 570: Introduction to Machine Learning,
+            August 2026.
+          </p>
+          <p><a href="files/cs2-buy-prediction.pdf" target="_blank" rel="noopener">writeup (PDF) &rarr;</a></p>
+        </article>
+
+        <article class="project">
+          <h3>RipperDoc</h3>
+          <p class="stack">Godot · GDScript</p>
+          <p>
+            A terminal-driven cyberpunk surgery game: type commands to operate on a
+            patient, monitor vitals, and clear minigames before they flatline. Placed
+            3rd at BlasterHacks 2026, April 2026.
+          </p>
+          <p><a href="https://github.com/aaronrjackson/ripperdoc" target="_blank" rel="noopener">repo &rarr;</a></p>
+        </article>
+
+        <article class="project">
+          <h3>Threat Identification Management System (TIMS)</h3>
+          <p class="stack">React · Node.js · SQLite · Groq API</p>
+          <p>
+            A prototype crisis-management tool for security teams: report and triage
+            threats, get AI-recommended threat levels, and pull AI-generated security
+            assessments across incident history. Built for BlasterHacks 2025, March 2025.
+          </p>
+          <p><a href="https://github.com/aaronrjackson/TIMS" target="_blank" rel="noopener">repo &rarr;</a></p>
+        </article>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-h">
+        <h2 id="contact-h"><span class="tok" aria-hidden="true">//</span> contact</h2>
+
+        <p>Feel free to reach out. Email gets to me quickest.</p>
+
+        <ul class="iconrow" aria-label="Contact links">
+          <li>
+            <a href="https://github.com/aaronrjackson" aria-label="GitHub" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/aaronrileyjackson/" aria-label="LinkedIn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:05.aaronjackson@gmail.com" aria-label="Email">
+              <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z"/>
+                <path fill="currentColor" d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+
+        <!-- TODO: add resume link once updated, e.g.
+        <p><a href="aaron-jackson-resume.pdf" target="_blank" rel="noopener">resume (PDF) &rarr;</a></p>
+        -->
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="pagefoot">
+    <p>&copy; 2026 Aaron Jackson. All rights reserved.</p>
+    <p>Thank you for visiting! :^)</p>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
