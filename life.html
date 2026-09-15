@@ -2,6 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <!-- Applies a saved theme choice before first paint, so there's no flash of the
+       wrong theme. Duplicated in index.html; keep both in sync. -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Aaron Jackson: off the clock</title>
   <meta name="description" content="Aaron Jackson away from work: music, and competitive Counter-Strike.">
@@ -43,6 +53,17 @@
         </nav>
       </div>
 
+      <button type="button" class="theme-toggle" role="switch" aria-checked="false" aria-label="Dark theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+        </svg>
+        <span class="theme-toggle-thumb" aria-hidden="true"></span>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </svg>
+      </button>
+
       <ul class="links" aria-label="Elsewhere">
         <li><a href="https://github.com/aaronrjackson" target="_blank" rel="noopener">github</a></li>
         <li><a href="https://www.linkedin.com/in/aaronrileyjackson/" target="_blank" rel="noopener">linkedin</a></li>
@@ -52,31 +73,138 @@
 
     <main>
 
-      <h1 class="page-lead">Off the clock.</h1>
+      <h1 class="page-lead">off the clock</h1>
 
       <section id="music" aria-labelledby="music-h">
         <h2 id="music-h"><span class="tok" aria-hidden="true">//</span> music</h2>
         <p>
-          A running list of what I've had on repeat lately.
+          I like to pretend that I have good music taste. For those curious, these are
+          some of my favorite albums of all time:
         </p>
-        <!-- TODO: drop in an embed (Spotify / Apple Music playlist) or a short list here. -->
+
+        <ul class="albums">
+          <li>
+            <figure>
+              <img src="img/albums/random-access-memories.webp" width="480" height="480" loading="lazy" alt="Random Access Memories by Daft Punk">
+              <figcaption><span class="album-title">Random Access Memories</span><span class="album-artist">Daft Punk</span></figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="img/albums/ill-try-living-like-this.webp" width="480" height="480" loading="lazy" alt="I'll Try Living Like This by death's dynamic shroud">
+              <figcaption><span class="album-title">I'll Try Living Like This</span><span class="album-artist">death's dynamic shroud</span></figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="img/albums/no-future.webp" width="480" height="480" loading="lazy" alt="No Future by eden">
+              <figcaption><span class="album-title">No Future</span><span class="album-artist">eden</span></figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="img/albums/ballads-1.webp" width="480" height="480" loading="lazy" alt="Ballads 1 by Joji">
+              <figcaption><span class="album-title">Ballads 1</span><span class="album-artist">Joji</span></figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="img/albums/justice.webp" width="480" height="480" loading="lazy" alt="Justice by Justice">
+              <figcaption><span class="album-title">Justice</span><span class="album-artist">Justice</span></figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="img/albums/for-lovers.webp" width="480" height="480" loading="lazy" alt="For Lovers by Lamp">
+              <figcaption><span class="album-title">For Lovers</span><span class="album-artist">Lamp</span></figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="img/albums/kokyuu.webp" width="480" height="480" loading="lazy" alt="呼吸 (Kokyuu) by Lily Chou-Chou">
+              <figcaption><span class="album-title">呼吸 (Kokyuu)</span><span class="album-artist">Lily Chou-Chou</span></figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="img/albums/wlfgrl.webp" width="480" height="480" loading="lazy" alt="Wlfgrl by Machine Girl">
+              <figcaption><span class="album-title">Wlfgrl</span><span class="album-artist">Machine Girl</span></figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="img/albums/world-is-yours.webp" width="480" height="480" loading="lazy" alt="ワールドイズユアーズ (World Is Yours) by Mass of the Fermenting Dregs">
+              <figcaption><span class="album-title">ワールドイズユアーズ (World Is Yours)</span><span class="album-artist">Mass of the Fermenting Dregs</span></figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="img/albums/a-call-from-my-dream.webp" width="480" height="480" loading="lazy" alt="A Call from My Dream by Meaningful Stone">
+              <figcaption><span class="album-title">A Call from My Dream</span><span class="album-artist">Meaningful Stone</span></figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="img/albums/loveless.webp" width="480" height="480" loading="lazy" alt="Loveless by My Bloody Valentine">
+              <figcaption><span class="album-title">Loveless</span><span class="album-artist">My Bloody Valentine</span></figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="img/albums/get-up.webp" width="480" height="480" loading="lazy" alt="Get Up by NewJeans">
+              <figcaption><span class="album-title">Get Up</span><span class="album-artist">NewJeans</span></figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="img/albums/fe3o4-break.webp" width="480" height="480" loading="lazy" alt="Fe3O4: BREAK by NMIXX">
+              <figcaption><span class="album-title">Fe3O4: BREAK</span><span class="album-artist">NMIXX</span></figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="img/albums/heavy-serenade.webp" width="480" height="480" loading="lazy" alt="Heavy Serenade by NMIXX">
+              <figcaption><span class="album-title">Heavy Serenade</span><span class="album-artist">NMIXX</span></figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="img/albums/deathmetal.webp" width="480" height="480" loading="lazy" alt="D&gt;E&gt;A&gt;T&gt;H&gt;M&gt;E&gt;T&gt;A&gt;L by Panchiko">
+              <figcaption><span class="album-title">D&gt;E&gt;A&gt;T&gt;H&gt;M&gt;E&gt;T&gt;A&gt;L</span><span class="album-artist">Panchiko</span></figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="img/albums/to-see-the-next-part-of-the-dream.webp" width="480" height="480" loading="lazy" alt="To See the Next Part of the Dream by Parannoul">
+              <figcaption><span class="album-title">To See the Next Part of the Dream</span><span class="album-artist">Parannoul</span></figcaption>
+            </figure>
+          </li>
+        </ul>
       </section>
 
       <section id="counter-strike" aria-labelledby="cs-h">
         <h2 id="cs-h"><span class="tok" aria-hidden="true">//</span> counter-strike</h2>
         <p>
-          I play Counter-Strike competitively on an ESEA Main team.
+          Counter-Strike takes up a larger chunk of my free time than I'd like to admit.
+        </p>
+        <p>
+          I play as AWP for Friendly Fire, a team of mostly friends from college. We
+          finished the last ESEA season in Main with a record of  4-10, then flew out to
+          Frag St. Louis, an open LAN, and placed dead last. Still worth the trip.
         </p>
 
-        <!-- TODO: add the Frag St. Louis LAN photo. Suggested markup:
         <figure class="photo">
-          <img src="img/frag-stl.jpg" width="960" height="640"
-               alt="Aaron at Frag St. Louis, seated at a competition PC mid-match">
-          <figcaption>Frag St. Louis LAN</figcaption>
+          <img src="img/frag-st-louis.webp" width="1536" height="1023" loading="lazy"
+               alt="Aaron mid-match at Frag St. Louis, wearing a headset at a competition PC">
+          <figcaption>me @ frag st. louis, august 2026</figcaption>
         </figure>
-        -->
 
-        <!-- TODO: team name, roster link, or a Leetify / results link if you want one. -->
+        <p>
+          I've also captained Mines' collegiate Counter-Strike team since May 2024,
+          playing AWP there too.
+        </p>
+
+        <!-- TODO: team roster link, or a Leetify / results link if you want one. -->
       </section>
 
     </main>
@@ -84,7 +212,7 @@
 
   <footer class="pagefoot">
     <p>&copy; 2026 Aaron Jackson. All rights reserved.</p>
-    <p>Thank you for visiting! :)</p>
+    <p>Thank you for visiting! :^)</p>
   </footer>
 
   <script src="app.js" defer></script>

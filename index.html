@@ -2,6 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <!-- Applies a saved theme choice before first paint, so there's no flash of the
+       wrong theme. Duplicated in life.html; keep both in sync. -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Aaron Jackson</title>
   <meta name="description" content="Aaron Jackson. CS graduate student at Colorado School of Mines and Software Engineer at TrackVia.">
@@ -33,7 +43,19 @@
             <li><a href="life.html">off the clock</a></li>
           </ul>
         </nav>
+
       </div>
+
+      <button type="button" class="theme-toggle" role="switch" aria-checked="false" aria-label="Dark theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+        </svg>
+        <span class="theme-toggle-thumb" aria-hidden="true"></span>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </svg>
+      </button>
 
       <ul class="links" aria-label="Elsewhere">
         <li><a href="https://github.com/aaronrjackson" target="_blank" rel="noopener">github</a></li>
@@ -49,12 +71,9 @@
 
         <p class="greeting">Hi, I'm Aaron.</p>
 
-        <!-- TODO: add a professional headshot if you want one. Suggested markup:
-        <figure class="photo">
-          <img src="img/aaron.jpg" width="800" height="800"
-               alt="Aaron Jackson">
+        <figure class="photo photo--headshot">
+          <img src="img/aaron.webp" width="1151" height="1536" alt="Aaron Jackson">
         </figure>
-        -->
 
         <p>
           I'm a computer science graduate student at the Colorado School of Mines and a
@@ -62,37 +81,62 @@
         </p>
         <p>
           I finished my B.S. in Computer Science at Mines in three years (Fall 2023 to
-          May 2026) with a concentration in Data Science, and I've stayed on for graduate
-          study while working full-time.
+          May 2026) with a concentration in Data Science, and I'm continuing there for
+          my Master's (expected May 2027).
         </p>
       </section>
 
       <section id="projects" aria-labelledby="projects-h">
         <h2 id="projects-h"><span class="tok" aria-hidden="true">//</span> projects</h2>
 
-        <!-- TODO: replace these three stubs with real projects. Keep the structure:
-             h3 title, .stack line, one or two sentences, a link. Swap href="#" for the
-             real URL and keep target="_blank" rel="noopener" on outbound links. -->
+        <!-- Ordered by date built, most recent first. -->
 
         <article class="project">
-          <h3>Project name</h3>
-          <p class="stack">Python · PostgreSQL</p>
-          <p>One or two sentences on what it is and what it does.</p>
-          <p><a href="#" target="_blank" rel="noopener">repo &rarr;</a></p>
+          <h3>ByteFlash</h3>
+          <p class="stack">Python · OpenCV</p>
+          <p>
+            An optical data-transfer system: encodes an image as a sequence of flashing
+            color blocks on a monitor, then decodes it frame-by-frame from webcam video,
+            no physical connection between sender and receiver. Final project for
+            CSCI 507, August 2026.
+          </p>
+          <p><a href="https://github.com/aaronrjackson/ByteFlash" target="_blank" rel="noopener">repo &rarr;</a></p>
         </article>
 
         <article class="project">
-          <h3>Project name</h3>
-          <p class="stack">TypeScript · React</p>
-          <p>One or two sentences on what it is and what it does.</p>
-          <p><a href="#" target="_blank" rel="noopener">writeup &rarr;</a></p>
+          <h3>Predicting Buy Decisions in Professional CS2</h3>
+          <p class="stack">Python · scikit-learn · pandas</p>
+          <p>
+            A model that recommends the buy-type call (eco, half-buy, force-buy, or
+            full-buy) a tier-1 team would make from a given game state, trained on
+            parsed replays from three professional tournaments. Beat the majority-class
+            baseline 4x on macro-F1 and correctly flagged eco/force-buy situations over
+            74% of the time. Built for DSCI 570: Introduction to Machine Learning,
+            August 2026.
+          </p>
+          <p><a href="files/cs2-buy-prediction.pdf" target="_blank" rel="noopener">writeup (PDF) &rarr;</a></p>
         </article>
 
         <article class="project">
-          <h3>Project name</h3>
-          <p class="stack">Go</p>
-          <p>One or two sentences on what it is and what it does.</p>
-          <p><a href="#" target="_blank" rel="noopener">repo &rarr;</a></p>
+          <h3>RipperDoc</h3>
+          <p class="stack">Godot · GDScript</p>
+          <p>
+            A terminal-driven cyberpunk surgery game: type commands to operate on a
+            patient, monitor vitals, and clear minigames before they flatline. Placed
+            3rd at BlasterHacks 2026, April 2026.
+          </p>
+          <p><a href="https://github.com/aaronrjackson/ripperdoc" target="_blank" rel="noopener">repo &rarr;</a></p>
+        </article>
+
+        <article class="project">
+          <h3>Threat Identification Management System (TIMS)</h3>
+          <p class="stack">React · Node.js · SQLite · Groq API</p>
+          <p>
+            A prototype crisis-management tool for security teams: report and triage
+            threats, get AI-recommended threat levels, and pull AI-generated security
+            assessments across incident history. Built for BlasterHacks 2025, March 2025.
+          </p>
+          <p><a href="https://github.com/aaronrjackson/TIMS" target="_blank" rel="noopener">repo &rarr;</a></p>
         </article>
       </section>
 
@@ -136,7 +180,7 @@
 
   <footer class="pagefoot">
     <p>&copy; 2026 Aaron Jackson. All rights reserved.</p>
-    <p>Thank you for visiting! :)</p>
+    <p>Thank you for visiting! :^)</p>
   </footer>
 
   <script src="app.js" defer></script>

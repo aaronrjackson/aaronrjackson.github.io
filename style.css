@@ -1,7 +1,7 @@
 /* ============================================================================
    aaron_jackson : design system  ("Mono-spine")
 
-   Type      display + nav : 0xProto (400 / 700), self-hosted woff2, see fonts/
+   Type      display + nav : 0xProto (400 / 700 / 400 italic), self-hosted woff2, see fonts/
              body          : Noto Sans (400 / 600 / 400 italic), Google Fonts
    Scale     body 1.15rem / 1.6 · section labels ("// name") 0.9rem mono bold,
              the "//" muted · meta 0.78rem
@@ -23,6 +23,13 @@
   src: url("fonts/0xProto-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "0xProto";
+  src: url("fonts/0xProto-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -47,8 +54,10 @@
   --s7: 6rem;
 }
 
+/* Dark palette applies from the OS preference by default, unless the toggle
+   (below) has set an explicit data-theme on <html> that overrides it. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --ink:    #ededed;
     --muted:  #a6a6a6;   /* 5.9:1 on the charcoal --bg */
     --bg:     #242424;   /* dark photoshop-style charcoal, not hard black */
@@ -57,8 +66,20 @@
   }
 
   /* pure white contact icons so they read clearly on the charcoal */
-  .iconrow a { color: #fff; }
+  :root:not([data-theme="light"]) .iconrow a { color: #fff; }
 }
+
+/* Explicit choice from the theme toggle; wins over the OS setting either way. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink:    #ededed;
+  --muted:  #a6a6a6;
+  --bg:     #242424;
+  --rule:   #454545;
+  --accent: #ff7a4d;
+}
+:root[data-theme="dark"] .iconrow a { color: #fff; }
+:root[data-theme="light"] { color-scheme: light; }
 
 * { box-sizing: border-box; }
 
@@ -67,6 +88,10 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background: var(--bg);
+  /* fades the page background/text when the theme changes, light<->dark or
+     system-driven. Scoped to body only, transitioning every element at once
+     caused a visible flicker from that many simultaneous repaints. */
+  transition: background-color 0.3s ease, color 0.3s ease;
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 1.15rem;
@@ -190,6 +215,56 @@ a:hover { text-decoration: none; }
 .nav a[aria-current="true"]::before,
 .nav a[aria-current="page"]::before { background: var(--accent); }
 
+/* light/dark toggle: a slider switch, pinned to the top right of the viewport.
+   See app.js for the click handler; aria-checked drives the CSS below. */
+.theme-toggle {
+  position: fixed;
+  top: var(--s3);
+  right: var(--s3);
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 3rem;
+  height: 1.5rem;
+  padding: 0 0.35rem;
+  border: none;
+  /* an inset shadow instead of a border: a real border eats into the box the
+     thumb below is centered against, and threw its position off by a pixel or two. */
+  box-shadow: inset 0 0 0 1px var(--rule);
+  border-radius: 999px;
+  background: var(--bg);
+  cursor: pointer;
+}
+.theme-toggle:hover,
+.theme-toggle:focus-visible { box-shadow: inset 0 0 0 1px var(--accent); }
+
+.theme-toggle svg {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 0.8rem;
+  height: 0.8rem;
+  color: var(--muted);
+}
+/* the icon under the thumb is knocked out to --bg for contrast against it */
+.theme-toggle[aria-checked="false"] .icon-sun { color: var(--bg); }
+.theme-toggle[aria-checked="true"] .icon-moon { color: var(--bg); }
+
+.theme-toggle-thumb {
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: var(--ink);
+  transition: transform 0.2s ease, background-color 0.25s ease;
+}
+.theme-toggle[aria-checked="true"] .theme-toggle-thumb {
+  transform: translateX(1.5rem);
+}
+
 /* secondary nav: the link across to the other page */
 .nav-aside {
   margin-top: var(--s3);
@@ -197,8 +272,10 @@ a:hover { text-decoration: none; }
   border-top: 1px solid var(--rule);
 }
 
-/* sub-nav under "off the clock" — only rendered on life.html */
-.nav-sub {
+/* sub-nav under "off the clock", only rendered on life.html */
+/* ".nav .nav-sub" (not just ".nav-sub") so this beats the ".nav ul { margin: 0 }"
+   reset above, which also matches this element and outranks a bare class selector */
+.nav .nav-sub {
   margin-top: var(--s1);
 }
 .nav-sub li { margin: 0; }
@@ -235,6 +312,13 @@ main {
 section {
   padding-block: var(--s5) var(--s4);
   border-top: 1px solid var(--rule);
+}
+/* contains a floated .photo--headshot so the next section's border/padding
+   sits below it instead of overlapping */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 section:first-child,
 .page-lead + section {
@@ -311,6 +395,11 @@ p:last-child { margin-bottom: 0; }
 .photo {
   margin: 0 0 var(--s4);
 }
+.photo--headshot {
+  float: right;
+  max-width: 11rem;
+  margin: 0 0 var(--s3) var(--s4);
+}
 .photo img {
   display: block;
   width: 100%;
@@ -322,6 +411,38 @@ p:last-child { margin-bottom: 0; }
   font-size: 0.75rem;
   color: var(--muted);
   margin-top: var(--s1);
+  text-align: right;
+}
+
+/* music section: a grid of album covers */
+.albums {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+  gap: var(--s3);
+}
+.albums figure { margin: 0; }
+.albums img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+}
+.albums figcaption {
+  margin-top: var(--s1);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+.albums .album-title {
+  display: block;
+  color: var(--ink);
+}
+.albums .album-artist {
+  display: block;
+  color: var(--muted);
 }
 
 /* ---- page footer -------------------------------------------------------- */
@@ -359,7 +480,7 @@ p:last-child { margin-bottom: 0; }
     gap: var(--s2);
   }
   .nav li { margin: 0; }
-  .nav-sub { margin-top: 0; }
+  .nav .nav-sub { margin-top: var(--s2); }
   .nav-sub li + li { margin-top: 0; }
   .nav-sub a { padding-left: 1.1rem; }
   .nav-sub a::before { left: 0; }
@@ -367,7 +488,16 @@ p:last-child { margin-bottom: 0; }
   main { max-width: none; }
 }
 
+/* phone widths: a floated headshot leaves too little room for text to wrap into */
+@media (max-width: 480px) {
+  .photo--headshot {
+    float: none;
+    max-width: 11rem;
+    margin: 0 0 var(--s4);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .iconrow a { transition: none; }
+  *, *::before, *::after { transition: none; }
 }
